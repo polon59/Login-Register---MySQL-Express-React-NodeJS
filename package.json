@@ -1,0 +1,23 @@
+{
+  "name": "login-register---mysql-express-react-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polon59/Login-Register---MySQL-Express-React-NodeJS.git"
+  },
+  "author": "polon59",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/polon59/Login-Register---MySQL-Express-React-NodeJS/issues"
+  },
+  "homepage": "https://github.com/polon59/Login-Register---MySQL-Express-React-NodeJS#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1"
+  }
+}
