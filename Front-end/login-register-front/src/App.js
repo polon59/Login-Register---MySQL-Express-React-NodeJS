@@ -4,6 +4,7 @@ import './App.css';
 import CompaniesMenu from './components/CompaniesMenu';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
+import Navbar from './components/navbar';
 
 class App extends React.Component{
   
