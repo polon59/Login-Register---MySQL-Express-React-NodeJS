@@ -9,14 +9,19 @@ class CompaniesController {
 
     setRoutes(){
         console.log("CompaniesController setroutes");
-        this.setMainRoute();
+        this.setRouteGetAllCompanies();
         this.setRouteCreatingCompany();
     }
 
-    setMainRoute(){
-        this.application.get('/', (req,res) =>{
-            console.log("main")
-            res.send('sdfsd');
+    setRouteGetAllCompanies(){
+        this.application.get('/registeredCompanies', (req,res) =>{
+            this.companiesDAO.getAllCompanies()
+            .then((result)=>{
+                res.send(result);
+            })
+            .catch(err => {
+                res.send(err);
+            });
         });
     }
 
