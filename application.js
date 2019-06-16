@@ -7,13 +7,13 @@ const application = express();
 const port = process.env.PORT || 6000;
 
 const dBConnection = new DBConnection();
-const userController = new UserController(application);
-const companiesController = new CompaniesController(application);
 
 dBConnection.createDBConnection().then(connection =>{
     if (!connection) process.exit();
+    const userController = new UserController(application, connection);
+    const companiesController = new CompaniesController(application, connection);
     userController.setRoutes();
     companiesController.setRoutes();
     application.listen(port, () => console.log(`Server listening on port ${port}`));
-})
+});
 
