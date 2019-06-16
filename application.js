@@ -4,7 +4,7 @@ const UserController = require('./Controller/UserController');
 const DBConnection = require('./DAO/DB init/DBConnection');
 
 const application = express();
-const PORT = process.env.PORT || 6000;
+const port = process.env.PORT || 6000;
 
 const dBConnection = new DBConnection();
 const userController = new UserController(application);
@@ -14,6 +14,6 @@ dBConnection.createDBConnection().then(connection =>{
     if (!connection) process.exit();
     userController.setRoutes();
     companiesController.setRoutes();
-    app.listen(port, () => console.log(`Server listening on port ${port}`));
+    application.listen(port, () => console.log(`Server listening on port ${port}`));
 })
 
