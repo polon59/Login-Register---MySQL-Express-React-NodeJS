@@ -1,17 +1,19 @@
 const DBConnection = require('./DBConnection');
 
 const dataBaseConn = new DBConnection();
-const connection = dataBaseConn.createDBConnection()
+dataBaseConn.createDBConnection()
 .then(connection=>{
     createTables(connection);
 });
 
+
 function createTables(connection) {
+    console.log('in create tables')
     createCompaniesTable(connection);
     createUsersTable(connection);
 }
 
-function createUsersTable(){
+function createUsersTable(connection){
     let sql = `CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         companyID INTEGER REFERENCES companies(id),
@@ -20,11 +22,12 @@ function createUsersTable(){
     );`;
     connection.query(sql, function (err, result) {
       if (err) throw err;
+      console.log("users Table Created");
     });
-    console.log("users Table Created");
+    
 }
 
-function createCompaniesTable(){
+function createCompaniesTable(connection){
     let sql = `CREATE TABLE companies (
         id SERIAL PRIMARY KEY,
         login VARCHAR(30) UNIQUE,
@@ -33,6 +36,7 @@ function createCompaniesTable(){
     );`;
     connection.query(sql, function (err, result) {
       if (err) throw err;
+      console.log("companies Table Created");
     });
-    console.log("companies Table Created");
+    
 }
