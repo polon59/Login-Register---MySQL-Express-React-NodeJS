@@ -5,7 +5,7 @@ class DbConnection{
         this.host = "localhost";
         this.user = "root";
         this.password = "mysQLpassword";
-        this.database = "mydb";
+        this.database = "loginRegisterTestDB";
       }
     
       createDBConnection(){
