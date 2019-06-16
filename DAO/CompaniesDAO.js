@@ -8,9 +8,6 @@ class CompaniesDAO {
     addNewCompany(request){
         return new Promise((resolve,reject)=>{
             const {login,password,name} = request.body;
-            console.log(login);
-            console.log(password);
-            console.log(name);
             const sql = `INSERT INTO companies (login, password, companyName)
             VALUES ('${login}', '${password}', '${name}');`
 

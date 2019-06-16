@@ -22,13 +22,13 @@ class CompaniesController {
 
     setRouteCreatingCompany(){
         this.application.put('/addCompany', (req,res) =>{
+
             this.companiesDAO.addNewCompany(req)
             .then(()=>{
                 res.send("created company");
             })
             .catch(err => {
-                console.log(err.message);
-                res.send(err.message);
+                res.send(err);
             });
         });
     }

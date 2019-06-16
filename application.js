@@ -1,10 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const CompaniesController = require('./Controller/CompaniesController');
 const UserController = require('./Controller/UserController');
 const DBConnection = require('./DAO/DB init/DBConnection');
 
 const application = express();
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 8000;
+application.use(bodyParser.json());
+application.use(bodyParser.urlencoded({extended:false}));
 
 const dBConnection = new DBConnection();
 
