@@ -10,6 +10,7 @@ const CompanyTable = (props) =>{
                 <td>{company.companyName}</td>
                 <td>{company.login}</td>
                 <td>{company.password}</td>
+                <td><button onClick={()=>{props.deleteCompany(company.id)}}>X</button></td>
             </tr>
         )
     })
@@ -23,6 +24,7 @@ const CompanyTable = (props) =>{
                 <th>company name</th>
                 <th>login</th>
                 <th>password</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
