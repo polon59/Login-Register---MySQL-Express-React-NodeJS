@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-class CompaniesMenu extends React.Component{
+class CompaniesMenu extends Component{
 
     constructor(props){
         super();

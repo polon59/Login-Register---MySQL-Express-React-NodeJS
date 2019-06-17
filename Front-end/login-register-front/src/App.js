@@ -6,10 +6,11 @@ import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import Navbar from './components/navbar';
 
-class App extends React.Component{
+class App extends Component{
   
   constructor(){
     super();
+    this.state = {};
   }
 
   render(){

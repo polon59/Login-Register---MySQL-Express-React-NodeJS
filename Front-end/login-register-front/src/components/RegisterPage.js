@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-class RegisterPage extends React.Component{
+class RegisterPage extends Component{
 
     constructor(props){
         super();
