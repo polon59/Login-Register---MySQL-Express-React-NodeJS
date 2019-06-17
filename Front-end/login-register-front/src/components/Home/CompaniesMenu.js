@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoadingSpinner from '../common/loadingSpinner';
 import FetchError from '../common/fetchError';
+import CompanyTable from './CompanyTable';
 
 
 class CompaniesMenu extends Component{
@@ -50,6 +51,7 @@ class CompaniesMenu extends Component{
         return(
             <div>
                 <h1>companies Menu</h1>
+                <CompanyTable companies = {companies}/>
                 {JSON.stringify(companies)}
             </div>
         )
