@@ -34,7 +34,7 @@ class App extends Component{
       <Route 
         path="/register"
         render={(props) => 
-          <RegisterPage/>}
+          <RegisterPage companyFetcher ={this.companyFetcher}/>}
       />
     </div>
   </Router>
