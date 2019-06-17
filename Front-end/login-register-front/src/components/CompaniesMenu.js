@@ -5,36 +5,26 @@ class CompaniesMenu extends Component{
 
     constructor(props){
         super();
+        this.companyFetcher = props.companyFetcher;
         this.state = {
             companies : null
         }
     }
 
-    fetchCompaniesData(){
-        return fetch('http://localhost:8000/registeredCompanies',{
-            method: "GET",
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-            }
-          })
-          .then(response => response.json())
-          .then(data => {return data;})
-    }
-
     componentWillMount(){
-        this.fetchCompaniesData()
+        this.companyFetcher.fetchCompaniesData()
         .then(result =>{
-            this.setState({
-                companies : result
-            });
+            this.updateCompaniesList(result);
         })
         .catch((err)=>{
-            alert("intercepted")
-            this.setState({
-                companies : "ERR"
-            });
+            this.updateCompaniesList("ERR");
         })
+    }
+
+    updateCompaniesList =(newValue)=>{
+        this.setState({
+            companies : newValue
+        });
     }
 
     render(){
