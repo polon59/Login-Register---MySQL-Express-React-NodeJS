@@ -24,7 +24,7 @@ class RegisterPage extends Component{
             });
         }).catch(err =>{
             this.setState({
-                dataSubmited : 'ERR'
+                dataSubmited : 'ERROR'
             });
         });
 

@@ -24,11 +24,12 @@ class CompanyFetcher{
             body: data
           })
           .then((res)=>{
+              const {status} = res;
               console.log(res.status + "STATUS")
 
-            if (data === 'created company') return "OK";
-            else if (data === 'loginExists') return 'badLogin';
-            return "ERR"
+            if (status === 200) return "OK";
+            else if (status === 409) return 'badLogin';
+            return "ERROR"
           })
           .catch(error => {
             console.log(error);
