@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import './App.css';
 import CompaniesMenu from './components/CompaniesMenu';
+import CompanyFetcher from './Fetchers/CompanyFetcher';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import Navbar from './components/navbar';
@@ -10,6 +11,7 @@ class App extends Component{
   
   constructor(){
     super();
+    this.companyFetcher = new CompanyFetcher();
     this.state = {};
   }
 
@@ -21,7 +23,7 @@ class App extends Component{
       <Route 
         exact path="/" 
         render={(props) => 
-          <CompaniesMenu/>
+          <CompaniesMenu companyFetcher ={this.companyFetcher}/>
           }
       />
       <Route 
