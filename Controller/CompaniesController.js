@@ -11,6 +11,7 @@ class CompaniesController {
         console.log("CompaniesController setroutes");
         this.setRouteGetAllCompanies();
         this.setRouteCreatingCompany();
+        this.setRouteDeleteCompany();
     }
 
     setRouteGetAllCompanies(){
@@ -21,6 +22,21 @@ class CompaniesController {
             })
             .catch(err => {
                 res.send(err);
+            });
+        });
+    }
+
+    setRouteDeleteCompany(){
+        this.application.delete('/deleteCompany', (req,res) =>{
+
+            this.companiesDAO.deleteCompany(req)
+            .then(()=>{
+                console.log("deleted company" + req.body.id)
+                res.status(200).send();
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(500).send();
             });
         });
     }
