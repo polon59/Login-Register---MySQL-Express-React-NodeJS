@@ -15,19 +15,27 @@ class CompaniesMenu extends Component{
     }
 
     componentWillMount(){
+        this.updateCompaniesList();
+    }
+
+    updateCompaniesList =()=>{
         this.companyFetcher.fetchCompaniesData()
         .then(result =>{
-            this.updateCompaniesList(result);
+            this.setState({
+                companies : result
+            });
         })
         .catch((err)=>{
-            this.updateCompaniesList("ERR");
+            this.setState({
+                companies : "ERR"
+            });
         })
     }
 
-    updateCompaniesList =(newValue)=>{
-        this.setState({
-            companies : newValue
-        });
+    deleteCompany = (id) =>{
+        this.companyFetcher.deleteCompany(id).then(()=>{
+            this.updateCompaniesList();
+        })
     }
 
     render(){
@@ -51,7 +59,7 @@ class CompaniesMenu extends Component{
         return(
             <div>
                 <h1>companies Menu</h1>
-                <CompanyTable companies = {companies}/>
+                <CompanyTable companies = {companies} deleteCompany={this.deleteCompany}/>
                 {JSON.stringify(companies)}
             </div>
         )
