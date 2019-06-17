@@ -43,7 +43,7 @@ class CompanyFetcher{
               'Accept': 'application/json',
               'Content-Type': 'application/json',
             },
-            body: companyId
+            body: JSON.stringify({id :companyId})
           })
           .then((res)=>{
               const {status} = res;
