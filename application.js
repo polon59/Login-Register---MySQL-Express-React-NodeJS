@@ -13,10 +13,21 @@ const dBConnection = new DBConnection();
 
 dBConnection.createDBConnection().then(connection =>{
     if (!connection) process.exit();
+    allowCors(application);
     const userController = new UserController(application, connection);
     const companiesController = new CompaniesController(application, connection);
     userController.setRoutes();
     companiesController.setRoutes();
     application.listen(port, () => console.log(`Server listening on port ${port}`));
 });
+
+
+function allowCors(application){
+    application.all('/*', function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
+        res.header('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
+        res.header('Access-Control-Allow-Headers', 'Content-Type,Accept');
+        next();
+      });
+}
 
