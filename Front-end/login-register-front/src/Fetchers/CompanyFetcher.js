@@ -25,8 +25,6 @@ class CompanyFetcher{
           })
           .then((res)=>{
               const {status} = res;
-              console.log(res.status + "STATUS")
-
             if (status === 200) return "OK";
             else if (status === 409) return 'badLogin';
             return "ERROR"
@@ -36,6 +34,30 @@ class CompanyFetcher{
             return "ERROR";
           });
     }
+
+
+    deleteCompany(companyId){
+        return fetch('http://localhost:8000/deleteCompany', {
+            method: "DELETE",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: companyId
+          })
+          .then((res)=>{
+              const {status} = res;
+            if (status === 200) return "OK";
+            return "ERROR"
+          })
+          .catch(error => {
+            console.log(error);
+            return "ERROR";
+          });
+    }
 }
+
+
+
 
 export default CompanyFetcher;
