@@ -26,14 +26,18 @@ class CompaniesController {
     }
 
     setRouteCreatingCompany(){
-        this.application.put('/addCompany', (req,res) =>{
+        this.application.put('/addCompany', (req,res,next) =>{
 
             this.companiesDAO.addNewCompany(req)
             .then(()=>{
-                res.send("created company");
+                console.log("added new company" + req.body)
+                res.status(200).send();
+                
             })
             .catch(err => {
-                res.send(err);
+                console.log(err)
+                err.code == 'ER_DUP_ENTRY' ? res.status(409).send() : res.status(500).send();
+                next();
             });
         });
     }

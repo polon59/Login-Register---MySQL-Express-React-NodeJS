@@ -3,6 +3,7 @@ import React from 'react';
 const CompanyTable = (props) =>{
     const companiesTableBody = props.companies.map((company, index)=>{
         return (
+            
             <tr key = {index}>
                 <td>{index+1}</td>
                 <td>{company.id}</td>
