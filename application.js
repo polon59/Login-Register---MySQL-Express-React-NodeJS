@@ -13,7 +13,7 @@ const dBConnection = new DBConnection();
 
 dBConnection.createDBConnection().then(connection =>{
     if (!connection) process.exit();
-    allowCors(application);
+    allowCORS(application);
     const userController = new UserController(application, connection);
     const companiesController = new CompaniesController(application, connection);
     userController.setRoutes();
@@ -22,7 +22,7 @@ dBConnection.createDBConnection().then(connection =>{
 });
 
 
-function allowCors(application){
+function allowCORS(application){
     application.all('/*', function(req, res, next) {
         res.header("Access-Control-Allow-Origin", 'http://localhost:3000');
         res.header('Access-Control-Allow-Methods', 'POST,GET,OPTIONS,PUT,DELETE');
