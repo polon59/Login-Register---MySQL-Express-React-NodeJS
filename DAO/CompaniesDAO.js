@@ -18,6 +18,18 @@ class CompaniesDAO {
         })
     }
 
+    deleteCompany(req){
+        return new Promise((resolve,reject)=>{
+            const {id} = req.body;
+            this.connection.query(`DELETE FROM companies WHERE id = ?`,[id], (err, result)=>{                                               
+                if(err){
+                    return reject(err);
+                }
+                resolve();
+            });
+        })
+    }
+
     getAllCompanies(){
         return new Promise((resolve,reject)=>{
             const sql = `SELECT * FROM companies;`;
