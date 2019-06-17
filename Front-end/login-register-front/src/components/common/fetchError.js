@@ -1,6 +1,6 @@
 import React from 'react';
 
-const fetchError = (props) =>{
+const FetchError = (props) =>{
     return (
         <div>
             <h3>Request error. Try again later.</h3>
@@ -8,4 +8,4 @@ const fetchError = (props) =>{
     )
 }
 
-export default fetchError;
+export default FetchError;

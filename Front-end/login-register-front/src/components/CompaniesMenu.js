@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import loadingSpinner from './common/loadingSpinner';
-import fetchError from './common/fetchError';
+import LoadingSpinner from './common/loadingSpinner';
+import FetchError from './common/fetchError';
 
 
 class CompaniesMenu extends Component{
@@ -35,14 +35,14 @@ class CompaniesMenu extends Component{
             return(
                 <div>
                     <h1>companies Menu</h1>
-                    <loadingSpinner/>
+                    <LoadingSpinner/>
                 </div>
             )
         } else if(companies === "ERR"){
             return(
                 <div>
                     <h1>companies Menu</h1>
-                    <fetchError/>
+                    <FetchError/>
                 </div>
             )
         }
