@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import './App.css';
-import CompaniesMenu from './components/CompaniesMenu';
+import CompaniesMenu from './components/Home/CompaniesMenu';
 import CompanyFetcher from './Fetchers/CompanyFetcher';
-import LoginPage from './components/LoginPage';
-import RegisterPage from './components/RegisterPage';
-import Navbar from './components/navbar';
+import LoginPage from './components/Login/LoginPage';
+import RegisterPage from './components/Register/RegisterPage';
+import Navbar from './components/common/navbar';
 
 class App extends Component{
   

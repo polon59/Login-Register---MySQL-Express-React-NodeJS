@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LoadingSpinner from './common/loadingSpinner';
-import FetchError from './common/fetchError';
+import LoadingSpinner from '../common/loadingSpinner';
+import FetchError from '../common/fetchError';
 
 
 class CompaniesMenu extends Component{
