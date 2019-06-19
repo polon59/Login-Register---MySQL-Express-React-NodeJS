@@ -29,7 +29,7 @@ class App extends Component{
       <Route 
         path="/login"
         render={(props) => 
-          <LoginPage/>}
+          <LoginPage companyFetcher ={this.companyFetcher}/>}
       />
       <Route 
         path="/register"
