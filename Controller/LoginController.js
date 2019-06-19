@@ -13,12 +13,14 @@ class LoginController {
     }
 
     setRouteLogin(){
-        this.application.get('/registeredCompanies', (req,res) =>{
-            this.companiesDAO.getAllCompanies()
+        this.application.post('/login', (req,res) =>{
+            this.companiesDAO.checkLoginParameters(req)
             .then((result)=>{
+                console.log(result);
                 res.send(result);
             })
             .catch(err => {
+                console.log(err);
                 res.send(err);
             });
         });
