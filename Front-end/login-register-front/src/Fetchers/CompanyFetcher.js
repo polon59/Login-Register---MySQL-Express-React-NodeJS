@@ -55,6 +55,24 @@ class CompanyFetcher{
             return "ERROR";
           });
     }
+
+
+    sendLoginData(data){
+      return fetch('http://localhost:8000/login', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: data
+      })
+      .then(response => response.json())
+      .then(data => {return data;})
+      .catch(error => {
+        console.log(error);
+        return "ERROR";
+      });
+    }
 }
 
 
