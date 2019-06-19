@@ -41,6 +41,19 @@ class CompaniesDAO {
         })
     }
 
+
+    checkLoginParameters(req){
+        return new Promise((resolve,reject)=>{
+            const {login,password} = req.body;
+            const sql = `SELECT id FROM companies WHERE login = "${login}" AND password = "${password}";`;
+
+            this.connection.query(sql, (err, result)=>{  
+                if(err)return reject(err);
+                resolve(result);
+            });
+        })
+    }
+
 }
 
 module.exports = CompaniesDAO;
