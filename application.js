@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const CompaniesController = require('./Controller/CompaniesController');
 const UserController = require('./Controller/UserController');
+const LoginController = require('./Controller/LoginController');
 const DBConnection = require('./DAO/DB init/DBConnection');
 
 const application = express();
@@ -16,7 +17,9 @@ dBConnection.createDBConnection().then(connection =>{
     allowCORS(application);
     const userController = new UserController(application, connection);
     const companiesController = new CompaniesController(application, connection);
+    const loginController = new LoginController(application, connection);
     userController.setRoutes();
+    loginController.setRoutes();
     companiesController.setRoutes();
     application.listen(port, () => console.log(`Server listening on port ${port}`));
 });
