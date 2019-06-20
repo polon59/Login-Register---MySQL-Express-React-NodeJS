@@ -4,11 +4,17 @@ const CompaniesController = require('./Controller/CompaniesController');
 const UserController = require('./Controller/UserController');
 const LoginController = require('./Controller/LoginController');
 const DBConnection = require('./DAO/DB init/DBConnection');
+const session = require('express-session');
 
 const application = express();
 const port = process.env.PORT || 8000;
 application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({extended:false}));
+application.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 
 const dBConnection = new DBConnection();
 
