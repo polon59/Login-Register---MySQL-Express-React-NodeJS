@@ -16,12 +16,19 @@ class LoginController {
         this.application.post('/login', (req,res) =>{
             this.companiesDAO.checkLoginParameters(req)
             .then((result)=>{
-                console.log(result);
-                res.send(result);
+                if (result.length < 1) {
+                    res.status(401).send();
+                    console.log("authentication failed");
+                    return;
+                }
+                req.session.loggedin = true;
+                req.session.userId = result[0].id;
+                console.log(`LOGGED USER ID=${result[0].id}`);
+                res.status(200).send({userID : result[0].id});
             })
             .catch(err => {
                 console.log(err);
-                res.send(err);
+                res.status(500).send();
             });
         });
     }
