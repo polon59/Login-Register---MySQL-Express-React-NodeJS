@@ -13,7 +13,7 @@ class LoginPage extends Component{
         const data = new FormData(e.target);
         this.companyFetcher.sendLoginData(this.stringifyFormData(data))
         .then(result=>{
-            alert(JSON.stringify(result));
+            alert(result);
         })
         .catch(err=>{
             console.log(err)

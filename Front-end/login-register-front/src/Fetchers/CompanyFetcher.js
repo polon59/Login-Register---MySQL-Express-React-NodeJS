@@ -66,11 +66,22 @@ class CompanyFetcher{
         },
         body: data
       })
-      .then(response => response.json())
-      .then(data => {return data;})
+      .then((res)=>{
+        if (res.status === 401){
+          return "Authentication failed";
+        }
+        else if (res.status === 200){
+          return res.json().then(data=>{
+            return data.userID;
+          })
+        }
+        else{
+          return "Internal server error";
+        }
+      })
       .catch(error => {
         console.log(error);
-        return "ERROR";
+        return "Internal server error";
       });
     }
 }
