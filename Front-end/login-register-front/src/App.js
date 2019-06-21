@@ -6,13 +6,25 @@ import CompanyFetcher from './Fetchers/CompanyFetcher';
 import LoginPage from './components/Login/LoginPage';
 import RegisterPage from './components/Register/RegisterPage';
 import Navbar from './components/common/navbar';
+import Protected from './components/Protected/Protected';
 
 class App extends Component{
   
   constructor(){
     super();
     this.companyFetcher = new CompanyFetcher();
-    this.state = {};
+    this.state = {
+
+    };
+    this.authenticated = false;
+  }
+
+  authenticate = () =>{
+    this.authenticated = true;
+  }
+
+  logout = () =>{
+    this.authenticated = false;
   }
 
   render(){
@@ -29,7 +41,19 @@ class App extends Component{
       <Route 
         path="/login"
         render={(props) => 
-          <LoginPage companyFetcher ={this.companyFetcher}/>}
+          <LoginPage 
+            companyFetcher ={this.companyFetcher}
+            authenticate = {this.authenticate}
+            logout = {this.logout}
+          />}
+      />
+      <Route 
+        path="/protected"
+        render={(props) => 
+          <Protected 
+            companyFetcher ={this.companyFetcher}
+            authenticated = {this.authenticated}
+          />}
       />
       <Route 
         path="/register"
