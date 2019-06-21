@@ -1,4 +1,5 @@
 const CompaniesDAO = require('../DAO/CompaniesDAO');
+const withAuth = require('./withAuth');
 
 class CompaniesController {
     
@@ -12,17 +13,25 @@ class CompaniesController {
         this.setRouteGetAllCompanies();
         this.setRouteCreatingCompany();
         this.setRouteDeleteCompany();
+        this.setRouteGetSecretData();
     }
 
     setRouteGetAllCompanies(){
         this.application.get('/registeredCompanies', (req,res) =>{
             this.companiesDAO.getAllCompanies()
             .then((result)=>{
+                res.cookie('cookie', 'monster')
                 res.send(result);
             })
             .catch(err => {
                 res.send(err);
             });
+        });
+    }
+
+    setRouteGetSecretData(){
+        this.application.get('/protected', withAuth, (req,res,next) =>{
+            res.status(200).send({info:"logged in"});
         });
     }
 
