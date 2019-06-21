@@ -57,26 +57,40 @@ class CompanyFetcher{
     }
 
 
+    fetchProtectedData(){
+      return fetch('http://localhost:8000/protected',{
+        method: "GET",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          credentials: 'include'
+        }
+      })
+      .then(response => response.text())
+      .then(data => {return data;})
+    }
+
+
     sendLoginData(data){
+      console.log(data)
       return fetch('http://localhost:8000/login', {
         method: "POST",
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
+          credentials: 'include'
         },
         body: data
       })
       .then((res)=>{
         if (res.status === 401){
-          return "Authentication failed";
+          return 401;
         }
         else if (res.status === 200){
-          return res.json().then(data=>{
-            return data.userID;
-          })
+          return 200;
         }
         else{
-          return "Internal server error";
+          return 500;
         }
       })
       .catch(error => {
